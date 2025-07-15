@@ -56,7 +56,7 @@
         border: none;
         background: #012034;
         padding: 0px;
-        font-size: 14px;
+        font-size: 15px !important;
     }
 
     .dropdown .dropdown-content .dropdown-item {
