@@ -1,0 +1,136 @@
+@media (max-width: 992px) {
+    #loader {
+        left: 43%;
+    }
+    
+    .loader-img {
+        left: 43%;
+    }
+
+    .home-cta-banner h1 {
+        font-size: 40px;
+    }
+
+    .offk-bg {
+        background: #012034;
+    }
+
+    .btn-times {
+        color: white;
+        border: none;
+        font-size: 25px;
+    }
+
+    .btn-times:hover {
+        color: white;
+    }
+      
+    .btn-times:focus {
+        box-shadow: none;
+        outline: none;
+        border: none;
+        color: white;
+    }
+
+    .navbar-nav .nav-item .nav-link {
+        margin-left: 0px;
+        text-transform: capitalize;
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    .navbar .navbar-nav .nav-item .nav-link {
+        color: white;
+    }
+    
+    .navbar .navbar-nav .nav-item.active .nav-link {
+        color: #85C121;
+    }
+    
+    .navbar .navbar-nav .nav-item:hover .nav-link {
+        color: #85C121;
+    }
+
+    .dropdown .dropdown-content {
+        box-shadow: none;
+        border: none;
+        background: #012034;
+        padding: 0px;
+        font-size: 14px;
+    }
+
+    .dropdown .dropdown-content .dropdown-item {
+        border-bottom: 1px solid #012034;
+        color: white;
+        padding: 8px 17px;
+    }
+
+    .dropdown .dropdown-content .dropdown-item:last-child {
+        border-bottom: 1px solid #012034;
+    }
+
+    .dropdown .dropdown-content .dropdown-item:hover {
+        background: #85C121;
+        border-bottom: 1px solid #85C121;
+    }
+}
+
+@media (max-width: 480px) {
+    #loader {
+        left: 35%;
+        top: 38%;
+    }
+    
+    .loader-img {
+        left: 35%;
+        top: 38%;
+    }
+
+    .banner-text-bg h2 {
+        font-size: 38px;
+    }
+    
+    .banner-text-bg p {
+        font-size: 14.5px;
+    }
+
+    .slider {
+        height: 550px;
+    }
+
+    .banner-slides {
+        height: 550px;
+    }
+
+    .banner-slides .slide__img#slide-one {
+        height: 550px;
+    }
+
+    .banner-slides .slide__img#slide-two {
+        height: 550px;
+    }
+
+    .banner-slides .slide__img#slide-three {
+        height: 550px;
+    }
+
+    .banner-text-bg {
+        height: 550px;
+    }
+
+    .stat-area h6 {
+        font-size: 14px;
+    }
+
+    .home-cta-banner {
+        padding: 40px 30px 50px 30px;
+    }
+
+    .home-cta-banner h1 {
+        font-size: 35px;
+    }
+
+    .home-cta-layer {
+        padding-top: 80px;
+    }
+}
