@@ -133,4 +133,9 @@
     .home-cta-layer {
         padding-top: 80px;
     }
+
+    .accordion-bg {
+        width: 80px;
+        transform: skew(-20deg);
+    }
 }
