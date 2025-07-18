@@ -138,4 +138,10 @@
         width: 80px;
         transform: skew(-20deg);
     }
+
+    .oth-banner-area h1 {
+        color: white;
+        font-weight: 700;
+        font-size: 2.2rem;
+    }
 }

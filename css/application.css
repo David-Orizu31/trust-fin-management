@@ -1,0 +1,113 @@
+.app-bg {
+    background: #f6f7fc;
+    min-height: 100vh;
+    width: 100%;
+    padding: 60px 0px;
+}
+
+.app-overlay {
+    background: linear-gradient(135deg, rgba(2, 175, 243, 0.801), rgba(3, 98, 171, 0.801)), url(../img/contact-banner.jpg) no-repeat;
+    background-size: cover;
+    width: 100%;
+    position: relative;
+    -webkit-box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.2);
+    /* Remove min-height entirely to allow auto-sizing */
+}
+
+.app-form-area {
+    position: static; /* Changed from absolute to static */
+    margin-left: 10%; /* Replaces left: 10% */
+    background: white;
+    width: 90%;
+    padding: 30px;
+    /* Remove height properties to let content determine size */
+}
+
+.select2-container--default .select2-selection--single {
+    border-radius: 0px !important;
+    height: 39px !important;
+    font-size: 14px;
+    border: 1px solid #dee2e6 !important;
+}
+
+.select2-container--default .select2-selection--single:focus {
+    border-color: #dee2e6 !important;   
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    line-height: 35px !important;
+    font-size: 14px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+    height: 37px !important;
+}
+
+.select2-container--default .select2-selection--multiple {
+    border-radius: 0px !important;
+    height: 39px !important;
+    font-size: 14px;
+    border: 1px solid #dee2e6 !important;
+}
+
+.select2-container--default .select2-search--dropdown .select2-search__field:focus {
+    outline: 0 !important;
+}
+
+.auth-form .form-group {
+    margin-top: 15px;
+}
+
+.auth-form .form-group .form-label {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.auth-form .form-group .form-control {
+   border-radius: 0px;
+   font-size: 14px;
+   padding: 8px 15px;
+}
+
+.auth-form .form-group .input-group .input-group-text {
+    border-radius: 0px;
+    padding: 8px 15px;
+    font-size: 14px;
+    color: white;
+    background-color: #027CC7;
+    border-color: 1px solid #027CC7;
+}
+
+.auth-form .form-group .form-control:focus {
+    box-shadow: none;
+    border-color: #dee2e6;
+}
+
+.auth-form .form-check-inline {
+    font-size: 14px;
+    color: #012d4b;
+}
+
+.auth-form .form-link {
+    color: #012d4b;
+}
+
+.auth-form .form-link:hover {
+    color: #BD8DBD;
+}
+
+.btn-auth {
+    color: white;
+    background: #027CC7;
+    border: 1px solid #027CC7;
+    border-radius: 0px;
+    font-size: 14.5px;
+    padding: 8px 15px;
+}
+
+.btn-auth:hover {
+    color: #027CC7;
+    background: white;
+    border: 1px solid #027CC7;
+}

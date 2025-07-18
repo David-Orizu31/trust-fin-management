@@ -1,0 +1,61 @@
+.login-bg {
+    background: linear-gradient(135deg, rgba(2, 175, 243, 0.801), rgba(3, 98, 171, 0.801)), url(../img/contact-banner.jpg) no-repeat center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    width: 100%;
+    padding: 70px 0px;
+}
+
+.auth-area {
+  padding: 30px;
+  background: white;
+  border-radius: 5px;
+}
+
+.auth-form .form-group .input-group .form-control {
+   border-radius: 0px;
+   font-size: 14.5px;
+   padding: 8px 15px;
+}
+
+.auth-form .form-group .input-group .input-group-text {
+    border-radius: 0px;
+    padding: 8px 14px;
+    font-size: 14.5px;
+    color: white;
+    background-color: #027CC7;
+    border-color: 1px solid #027CC7;
+}
+
+.auth-form .form-group .input-group .form-control:focus {
+    box-shadow: none;
+    border-color: #dee2e6;
+}
+
+.auth-form .form-check-inline {
+    font-size: 14px;
+    color: #012d4b;
+}
+
+.auth-form .form-link {
+    color: #012d4b;
+}
+
+.auth-form .form-link:hover {
+    color: #BD8DBD;
+}
+
+.btn-auth {
+    color: white;
+    background: #027CC7;
+    border: 1px solid #027CC7;
+    border-radius: 0px;
+    font-size: 14.5px;
+    padding: 8px 15px;
+}
+
+.btn-auth:hover {
+    color: #027CC7;
+    background: white;
+    border: 1px solid #027CC7;
+}
