@@ -50,7 +50,7 @@
 
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-lg-8 col-md-10">
+                <div class="col-lg-9 col-md-12">
                    <div class="app-overlay">
                       <div class="app-form-area">
 
@@ -62,7 +62,12 @@
                             <p class="font-12 text-purple mb-0">Kindly complete the loan application form accurately. Ensure all required fields are filled and supporting documents are uploaded where necessary. This information will be used to assess your eligibility and process your loan request as quickly as possible.</p>
                         </div>
 
-                        <form action="" class="auth-form" method="post" enctype="multipart/form-data">
+                        <div id="formAlert" class="alert alert-danger" style="display:none;">
+                            <strong>Please fill the following required fields:</strong>
+                            <ul id="missingFieldsList"></ul>
+                        </div>
+
+                        <form action="" class="auth-form" id="loanform" method="post" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
@@ -75,10 +80,20 @@
                                 <div class="col-md-8 ps-md-4">
                                     <div class="form-group">
                                         <label class="form-label d-md-block d-none" style="visibility: hidden;">Your captured image</label>
-                                        <input type="hidden" name="avatar" class="image-tag">
+                                        <input type="hidden" name="avatar" class="image-tag" required>
                                         <div id="results">
                                             Your captured image will appear here...
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="account_type_id" class="form-label">Choose Account Type</label>
+                                        <select name="account_type_id" id="account_type_id" class="form-select select-control" required>
+                                            <option value="1">Personal</option>
+                                            <option value="2">Corporate</option>
+                                            <option value="3">Joint</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -153,6 +168,231 @@
                                             <option value="Employed">Employed</option>
                                             <option value="Self Employed">Self Employed</option>
                                         </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 optional-section" id="studentdiv" style="display: none;">
+                                    <div class="form-group">
+                                        <label for="student" class="form-label">Are you a Student?</label>
+                                        <select name="student" id="student" class="form-select select-control" style="width: 100%;">
+                                            <option value="Yes">Yes</option>
+                                            <option value="No">No</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 optional-section" id="employclass" style="display: none;">
+                                    <div class="form-group">
+                                        <label for="employ_class" class="form-label">Employer (Government Ministry/Agency)</label>
+                                        <select name="employ_class" id="employ_class" class="form-select select-control" style="width: 100%;">
+                                            <option value="">-- Select --</option>
+                                            <option value="Ministry">Ministry</option>
+                                            <option value="Agency">Agency</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 optional-section" id="ministrydiv" style="display: none;">
+                                    <div class="form-group">
+                                        <label for="ministry" class="form-label">Choose Ministry</label>
+                                        <select name="ministry" id="ministry" class="form-select select-control" style="width: 100%;">
+                                            <option value="">-- Select --</option>
+                                            <option value="Federal Ministry of Budget and Economic Planning">Federal Ministry of Budget and Economic Planning</option>
+                                            <option value="Federal Ministry of Humanitarian Affairs and Poverty Alleviation">Federal Ministry of Humanitarian Affairs and Poverty Alleviation</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 optional-section" id="sectordiv" style="display: none;">
+                                    <div class="form-group">
+                                        <label for="sector" class="form-label">Agency Sector</label>
+                                        <select name="sector" id="sector" class="form-select select-control" style="width: 100%;">
+                                            <option value="">-- Select --</option>
+                                            <option value="Economy & Finance">Economy & Finance</option>
+                                            <option value="Communications & Information Technology">Communications & Information Technology</option>
+                                            <option value="Aviation & Transportation">Aviation & Transportation</option>
+                                            <option value="Oil, Gas & Energy">Oil, Gas & Energy</option>
+                                            <option value="Environment & Agriculture">Environment & Agriculture</option>
+                                            <option value="Health & Social Services">Health & Social Services</option>
+                                            <option value="Justice, Regulation & Oversight">Justice, Regulation & Oversight</option>
+                                            <option value="Science, Research & Culture">Science, Research & Culture</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 optional-section" id="agencydiv" style="display: none;">
+                                    <div class="form-group">
+                                        <label for="agency" class="form-label">Agency Name</label>
+                                        <select name="agency" id="agency" class="form-select select-control" style="width: 100%;">
+                                            <option value="">-- Select --</option>
+                                            <option value="Agency 1">Agency 1</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 optional-section" id="proofemploydiv" style="display: none;">
+                                    <div class="form-group">
+                                        <label for="employment_proof" class="form-label">Proof of Employment & Income</label>
+                                        <select name="employment_proof" id="employment_proof" class="form-select select-control" style="width: 100%;">
+                                            <option value="">-- Select --</option>
+                                            <option value="IPPIS">IPPIS number</option>
+                                            <option value="IPPIS">Pay Slip</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 optional-section" id="ippisdiv" style="display: none;">
+                                    <div class="form-group">
+                                        <label for="ippis" class="form-label">IPPIS Number</label>
+                                        <input type="text" name="ippis" id="ippis" class="form-control" placeholder="Enter IPPIS Number">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 optional-section" id="payslipdiv" style="display: none;">
+                                    <div class="form-group">
+                                        <label for="pay_slip" class="form-label">Pay Slip</label>
+                                        <input type="file" name="pay_slip" id="pay_slip" class="form-control" accept=".pdf,.doc,.docx,image/*">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 optional-section" id="selfemploydiv" style="display: none;">
+                                    <div class="form-group">
+                                        <label for="self_employ_category" class="form-label">Occupation Type</label>
+                                        <select name="self_employ_category" id="self_employ_category" class="form-select select-control" style="width: 100%;">
+                                            <option value="">-- Select --</option>
+                                            <option value="Artisan">Artisan</option>
+                                            <option value="Business Owner">Business Owner</option>
+                                            <option value="Entrepreneur">Entrepreneur</option>
+                                            <option value="Professional">Professional</option>
+                                            <option value="Farmer">Farmer</option>
+                                            <option value="Trader/Vendor">Trader/Vendor</option>
+                                            <option value="Freelancer">Freelancer</option>
+                                            <option value="Contractor">Contractor</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 optional-section" id="otherdiv" style="display: none;">
+                                    <div class="form-group">
+                                        <label for="other" class="form-label">State Occupation Type</label>
+                                        <input type="text" name="other" id="other" class="form-control" placeholder="Enter Occupation Type">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="occupation" class="form-label">Occupation</label>
+                                        <input type="text" name="occupation" id="occupation" class="form-control" placeholder="Enter Occupation" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="home_address" class="form-label">Home Address</label>
+                                        <textarea name="home_address" id="home_address" class="form-control" rows="3" placeholder="Enter Home Address" required></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="business_address" class="form-label">Business Address</label>
+                                        <textarea name="business_address" id="business_address" class="form-control" rows="3" placeholder="Enter Business Address" required></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="loan_amount" class="form-label">Amount Applied For</label>
+                                        <input type="text" name="loan_amount" id="loan_amount" class="form-control" placeholder="Enter Loan Amount" onkeyup="this.value = this.value.replace(/[^0-9]/g,'');" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="loan_purpose" class="form-label">Purpose of the Loan</label>
+                                        <textarea name="loan_purpose" id="loan_purpose" class="form-control" rows="3" placeholder="Enter Loan Purpose" required></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="loan_type" class="form-label">Loan Type</label>
+                                        <select name="loan_type" id="loan_type" class="form-select select-control" required>
+                                            <option value="Soft or Instant">Soft Loan / Instant Loan (Max. of 3 months)</option>
+                                            <option value="Group">Group Loan (Max. of 7 months)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="loan_duration" class="form-label">Loan Duration</label>
+                                        <select name="loan_duration" id="loan_duration" class="form-select select-control" required>
+                                            <option value="1 month">1 month</option>
+                                            <option value="2 months">2 months</option>
+                                            <option value="3 months">3 months</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="payment_form" class="form-label">Payment Option (Form of Payment)</label>
+                                        <select name="payment_form" id="payment_form" class="form-select select-control" required>
+                                            <option value="Weekly">Weekly</option>
+                                            <option value="Monthly">Monthly</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="payment_source" class="form-label">Source of Payment</label>
+                                        <select name="payment_source" id="payment_source" class="form-select select-control" required>
+                                            <option value="Business">Business</option>
+                                            <option value="Salary">Salary</option>
+                                            <option value="Rent">Rent</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="account_number" class="form-label">Account Number</label>
+                                        <input type="text" name="account_number" id="account_number" class="form-control" placeholder="Enter Account Number" onkeyup="this.value = this.value.replace(/[^0-9]/g,'');" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="bank_name" class="form-label">Bank Name</label>
+                                        <input type="text" name="bank_name" id="bank_name" class="form-control" placeholder="Enter Bank Name" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="bvn" class="form-label">Bank Verification Number</label>
+                                        <input type="text" name="bvn" id="bvn" class="form-control" placeholder="Enter your BVN" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <h6 class="text-blue mt-3 font-600">List of Collateral Securities:</h6>
+                                    <small class="font-13"><strong class="text-danger">Note:</strong> List out Household equipments or landed properties you have in possession. The value of these equipments or properties must be twice your loan application amount.</small>
+
+                                    <div class="table-responsive mt-2">
+                                        <table class="table table-bordered font-14">
+                                            <thead>
+                                                <tr>
+                                                    <th style="width: 20px;">S/N</th>
+                                                    <th>Collateral</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="result-table-body">
+                                                <tr>
+                                                    <td style="width: 20px;">1</td>
+                                                    <td class="form-group">
+                                                        <input type="text" name="collateral[]" class="form-control" placeholder="Enter Collateral" style="min-width: 170px;" required>
+                                                    </td>
+                                                    <td></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                   <button class="btn btn-success btn-sm" type="button" onclick="addRow()"><span class="fa fa-plus"></span> Add Collateral</button>
+
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="signature" class="form-label">Your Signature</label>
+                                        <input type="file" name="signature" id="signature" class="form-control" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12 mt-3">
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-blue rounded-0">Submit Application</button>
                                     </div>
                                 </div>
                             </div>
@@ -243,8 +483,8 @@
     </script>
     <!-- Auth JS -->
     <script src="js/auth.js"></script>
+    <!-- Webcam JS -->
     <script src="js/webcam.min.js"></script>
-
     <script language="JavaScript">
         Webcam.set({
             width: 200,
@@ -261,6 +501,151 @@
                 document.getElementById('results').innerHTML = '<img src="'+data_uri+'"/>';
             } );
         }
+    </script>
+
+    <!-- Prevent Hidden Form fields from Submitting -->
+    <script>
+    $('#loanform').on('submit', function(e) {
+        let hasEmptyRequired = false;
+        let missingFields = [];
+
+        // Always hide alert first
+        $('#formAlert').hide();
+        $('#missingFieldsList').empty();
+
+        $('.optional-section').each(function() {
+            const $section = $(this);
+
+            if ($section.css('display') === 'none') {
+                // Hidden → remove names
+                $section.find('input, select, textarea').each(function() {
+                    $(this).removeAttr('name');
+                });
+            } else {
+                // Visible → check for empty fields
+                $section.find('input, select, textarea').each(function() {
+                    const $field = $(this);
+
+                    // Restore name if missing
+                    if (!$field.attr('name')) {
+                        if ($field.attr('id')) {
+                            $field.attr('name', $field.attr('id'));
+                        }
+                    }
+
+                    // Check if empty
+                    if (!$field.prop('disabled') && !$field.val().trim()) {
+                        hasEmptyRequired = true;
+                        missingFields.push($field.attr('id') || $field.attr('placeholder') || 'Unnamed field');
+                    }
+                });
+            }
+        });
+
+        if (hasEmptyRequired) {
+            e.preventDefault(); // stop submission
+
+            // Append each missing field as a list item
+            $.each(missingFields, function(index, field) {
+                $('#missingFieldsList').append(`<li>${field}</li>`);
+            });
+
+            // Show the alert box
+            $('#formAlert').show();
+        }
+    });
+
+    // Dynamically Add Collaterals
+    function addRow() {
+        const tbody = document.getElementById("result-table-body");
+        const totalRows = tbody.rows.length;
+
+        const index = totalRows + 1;
+        var newRow = `
+            <tr>
+                <td class="serial" style="width: 20px;">${index}</td>
+                <td class="form-group">
+                    <input type="text" name="collateral[]" class="form-control" placeholder="Enter Collateral" style="min-width: 170px;" required>
+                </td>
+                <td style="min-width: 30px;">
+                    <button type="button" class="btn btn-danger btn-sm remove-result-row">
+                        <span class="fa fa-trash-alt"></span>
+                    </button>
+                </td>
+            </tr>`;
+        $('#result-table-body').append(newRow);
+        reindexRows(); // make sure indexes are always correct
+    }
+
+    // Remove Row
+    $(document).on('click', '.remove-result-row', function() {
+        $(this).closest('tr').remove();
+        reindexRows(); // update serial numbers after removal
+    });
+
+    // Reindex function
+    function reindexRows() {
+        $('#result-table-body tr').each(function(index) {
+            $(this).find('.serial').text(index + 1);
+        });
+    }
+
+    // On Changing Fields Function
+    $('#employ_status').change(function() {
+        var studentdiv = $('#studentdiv');
+        var employclass = $('#employclass');
+        var ministrydiv = $('#ministrydiv');
+        var sectordiv = $('#sectordiv');
+        var agencydiv = $('#agencydiv');
+        var proofemploydiv = $('#proofemploydiv');
+        var ippisdiv = $('#ippisdiv');
+        var payslipdiv = $('#payslipdiv');
+        var selfemploydiv = $('#selfemploydiv');
+        var otherdiv = $('#otherdiv');
+
+        if ($(this).val() == 'Unemployed') {
+            studentdiv.show();
+            employclass.hide();
+            ministrydiv.hide();
+            sectordiv.hide();
+            agencydiv.hide();
+            proofemploydiv.hide();
+            ippisdiv.hide();
+            payslipdiv.hide();
+            selfemploydiv.hide();
+            otherdiv.hide();
+        } else if ($(this).val() == 'Employed') {
+            studentdiv.hide();
+            employclass.show();
+            ministrydiv.hide();
+            sectordiv.hide();
+            agencydiv.hide();
+            proofemploydiv.show();
+            ippisdiv.hide();
+            payslipdiv.hide();
+            selfemploydiv.hide();
+            otherdiv.hide();
+        } else if ($(this).val() == 'Self Employed') {
+            studentdiv.hide();
+            employclass.hide();
+            ministrydiv.hide();
+            sectordiv.hide();
+            agencydiv.hide();
+            proofemploydiv.hide();
+            ippisdiv.hide();
+            payslipdiv.hide();
+            selfemploydiv.show();
+            otherdiv.hide();
+        }
+    });
+
+    $('#self_employ_category').change(function() {
+      if($(this).val() == 'Other') {
+        $('#otherdiv').show();
+      } else {
+        $('#otherdiv').hide();
+      }
+    });
     </script>
 
     </body>
