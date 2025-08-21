@@ -652,6 +652,22 @@
         }
     });
 
+    $('#employ_class').change(function() {
+       if ($(this).val() == 'Ministry') {
+        $('#ministrydiv').show();
+        $('#sectordiv').hide();
+        $('#agencydiv').hide();
+       } else if ($(this).val() == 'Agency') {
+        $('#ministrydiv').hide();
+        $('#sectordiv').show();
+        $('#agencydiv').show();
+       } else {
+        $('#ministrydiv').hide();
+        $('#sectordiv').hide();
+        $('#agencydiv').hide();
+       }
+    });
+
     $('#self_employ_category').change(function() {
       if($(this).val() == 'Other') {
         $('#otherdiv').show();
