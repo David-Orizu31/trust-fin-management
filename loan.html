@@ -407,6 +407,8 @@
 
         </main>
 
+        <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="la la-angle-up" aria-hidden="true"></i></button>
+
         <!-- Bootstrap JavaScript Libraries -->
         <script src="bootstrap/js/popper.min.js"></script>
         <script src="bootstrap/js/bootstrap.min.js"></script>
@@ -636,6 +638,17 @@
             payslipdiv.hide();
             selfemploydiv.show();
             otherdiv.hide();
+        } else {
+            studentdiv.hide();
+            employclass.hide();
+            ministrydiv.hide();
+            sectordiv.hide();
+            agencydiv.hide();
+            proofemploydiv.hide();
+            ippisdiv.hide();
+            payslipdiv.hide();
+            selfemploydiv.hide();
+            otherdiv.hide();
         }
     });
 
@@ -644,6 +657,26 @@
         $('#otherdiv').show();
       } else {
         $('#otherdiv').hide();
+      }
+    });
+
+    $('#loan_type').change(function() {
+      if ($(this).val() == 'Soft or Instant') {
+        $('#loan_duration').html(`
+            <option value="1 month">1 month</option>
+            <option value="2 months">2 months</option>
+            <option value="3 months">3 months</option>
+        `);
+      } else {
+        $('#loan_duration').html(`
+            <option value="1 month">1 month</option>
+            <option value="2 months">2 months</option>
+            <option value="3 months">3 months</option>
+            <option value="4 months">4 months</option>
+            <option value="5 months">5 months</option>
+            <option value="6 months">6 months</option>
+            <option value="7 months">7 months</option>
+        `);
       }
     });
     </script>
