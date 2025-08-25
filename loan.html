@@ -69,7 +69,7 @@
 
                         <form action="" class="auth-form" id="loanform" method="post" enctype="multipart/form-data">
                             <div class="row">
-                                <div class="col-md-4">
+                                <!-- <div class="col-md-4">
                                     <div class="form-group">
                                         <label for="avatar" class="form-label">Photo</label>
                                         <br>
@@ -85,21 +85,27 @@
                                             Your captured image will appear here...
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-md-12">
+                                </div> -->
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="account_type_id" class="form-label">Choose Account Type</label>
                                         <select name="account_type_id" id="account_type_id" class="form-select select-control" required>
-                                            <option value="1">Personal</option>
-                                            <option value="2">Corporate</option>
-                                            <option value="3">Joint</option>
+                                            <option value="1" data-value="Personal">Personal</option>
+                                            <option value="2" data-value="Corporate">Corporate</option>
+                                            <option value="3" data-value="Joint">Joint</option>
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="title" class="form-label">Title:</label>
-                                        <input type="text" name="title" id="title" class="form-control" placeholder="Eg. Mr." required>
+                                        <label for="avatar" class="form-label">Account Holder's Photo</label>
+                                        <input type="file" name="avatar" id="avatar" class="form-control" accept="image/*" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 optional-section" id="titlediv">
+                                    <div class="form-group">
+                                        <label for="title" class="form-label">Title(s):</label>
+                                        <input type="text" name="title" id="title" class="form-control" placeholder="Eg. Mr., Mr. & Mrs.">
                                     </div>
                                 </div>
                                 <div class="col-md-8">
@@ -108,16 +114,16 @@
                                         <input type="text" name="surname" id="surname" class="form-control" placeholder="Surname" required>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-6 optional-section" id="fname">
                                     <div class="form-group">
                                         <label for="first_name" class="form-label">First Name(s):</label>
-                                        <input type="text" name="first_name" id="first_name" class="form-control" placeholder="First Name(s)" required>
+                                        <input type="text" name="first_name" id="first_name" class="form-control" placeholder="First Name(s)">
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-6 optional-section" id="othname">
                                     <div class="form-group">
                                         <label for="other_name" class="form-label">Other Name(s):</label>
-                                        <input type="text" name="other_name" id="other_name" class="form-control" placeholder="Other Name(s)" required>
+                                        <input type="text" name="other_name" id="other_name" class="form-control" placeholder="Other Name(s)">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -132,10 +138,10 @@
                                         <input type="tel" name="phone" id="phone" class="form-control" placeholder="Phone Number" required>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-6 optional-section" id="maritaldiv">
                                     <div class="form-group">
                                         <label for="marital_status" class="form-label">Marital Status:</label>
-                                        <select name="marital_status" id="marital_status" class="form-select select-control" required>
+                                        <select name="marital_status" id="marital_status" class="form-select select-control">
                                             <option value="Single">Single</option>
                                             <option value="Married">Married</option>
                                             <option value="Divorced">Divorced</option>
@@ -275,21 +281,21 @@
                                         <input type="text" name="occupation" id="occupation" class="form-control" placeholder="Enter Occupation" required>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-6 optional-section" id="homeadddiv">
                                     <div class="form-group">
                                         <label for="home_address" class="form-label">Home Address</label>
-                                        <textarea name="home_address" id="home_address" class="form-control" rows="3" placeholder="Enter Home Address" required></textarea>
+                                        <textarea name="home_address" id="home_address" class="form-control" rows="3" placeholder="Enter Home Address"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="business_address" class="form-label">Business Address</label>
-                                        <textarea name="business_address" id="business_address" class="form-control" rows="3" placeholder="Enter Business Address" required></textarea>
+                                        <textarea name="business_address" id="business_address" class="form-control" rows="3" placeholder="Enter Business Address"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="loan_amount" class="form-label">Amount Applied For</label>
+                                        <label for="loan_amount" class="form-label">Amount Applied For (₦)</label>
                                         <input type="text" name="loan_amount" id="loan_amount" class="form-control" placeholder="Enter Loan Amount" onkeyup="this.value = this.value.replace(/[^0-9]/g,'');" required>
                                     </div>
                                 </div>
@@ -383,10 +389,35 @@
                                    <button class="btn btn-success btn-sm" type="button" onclick="addRow()"><span class="fa fa-plus"></span> Add Collateral</button>
 
                                 </div>
+
+                                <div class="col-md-6 optional-section" id="certdiv" style="display: none;">
+                                    <div class="form-group">
+                                        <label for="certificate" class="form-label">Certificate of Incorporation</label>
+                                        <input type="file" class="form-control" name="certificate" id="certificate" accept=".pdf,.jpg,.jpeg,.png">
+                                        <strong class="font-11 text-danger">Max. Size - 2MB (Accepted formats: pdf, jpg, jpeg, png)</strong>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 optional-section" id="regnodiv" style="display: none;">
+                                    <div class="form-group">
+                                        <label for="reg_no" class="form-label">Company Reg No.</label>
+                                        <input type="text" name="reg_no" id="reg_no" class="form-control" placeholder="Eg. RC:100003">
+                                    </div>
+                                </div>
+
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="signature" class="form-label">Your Signature</label>
                                         <input type="file" name="signature" id="signature" class="form-control" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="agree" id="agree"/>
+                                            <label class="form-check-label" for="terms" style="font-size: 14px;"> I acknowledge that I have read, understood, and agree to be bound by the <a href="terms.html" class="text-primary" target="_blank">Terms & Conditions</a> of Trust Financial Management Cooperative Society.</label>
+                                        </div>
                                     </div>
                                 </div>
 
@@ -486,7 +517,7 @@
     <!-- Auth JS -->
     <script src="js/auth.js"></script>
     <!-- Webcam JS -->
-    <script src="js/webcam.min.js"></script>
+    <!-- <script src="js/webcam.min.js"></script>
     <script language="JavaScript">
         Webcam.set({
             width: 200,
@@ -503,7 +534,7 @@
                 document.getElementById('results').innerHTML = '<img src="'+data_uri+'"/>';
             } );
         }
-    </script>
+    </script> -->
 
     <!-- Prevent Hidden Form fields from Submitting -->
     <script>
@@ -694,6 +725,33 @@
             <option value="7 months">7 months</option>
         `);
       }
+    });
+
+    $('#account_type_id').change(function() {
+       var acctype = $('#account_type_id option:selected').data('value');
+       if (acctype == 'Corporate') {
+        $('label[for="surname"]').html('Company\'s Name:');
+        $('#surname').attr("placeholder", "Company's Name");
+        $('#fname').hide();
+        $('#othname').hide();
+        $('#titlediv').hide();
+        $('#maritaldiv').hide();
+        $('#homeadddiv').hide();
+        $('#certdiv').show();
+        $('#regnodiv').show();
+        $('#business_address').prop('required', true);
+       } else {
+        $('label[for="surname"]').html('Surname:');
+        $('#surname').attr("placeholder", "Surname");
+        $('#fname').show();
+        $('#othname').show();
+        $('#titlediv').show();
+        $('#maritaldiv').show();
+        $('#homeadddiv').show();
+        $('#certdiv').hide();
+        $('#regnodiv').hide();
+        $('#business_address').prop('required', false);
+       }
     });
     </script>
 

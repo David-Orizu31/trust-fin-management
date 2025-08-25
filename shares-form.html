@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Trust Financial Management Coorperative Society - Loan</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="img/trustfin-logo-transparent.png" type="image/x-icon">
+        <!-- Bootstrap CSS v5.2.1 -->
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="css/responsive.css">
+        <!-- Slick Carousel CSS -->
+        <link rel="stylesheet" href="slick-1.8.1/slick-1.8.1/slick/slick.css">
+        <link rel="stylesheet" href="slick-1.8.1/slick-1.8.1/slick/slick-theme.css">
+        <!-- Icofont CSS -->
+        <link rel="stylesheet" href="icofont/icofont.min.css">
+        <!-- AOS CSS -->
+        <link rel="stylesheet" href="aos/aos.css">
+        <!-- Font Awesome JS -->
+        <script src="js/font-awesome.js"></script>
+        <!-- Line Awesome CSS -->
+        <link rel="stylesheet" href="line-awesome/css/line-awesome.css">
+        <link rel="stylesheet" href="line-awesome/css/line-awesome.min.css">
+        <!-- Animate CSS -->
+        <link rel="stylesheet" href="css/animate.css">
+        <!-- FancyBox CSS -->
+        <link rel="stylesheet" href="fancybox-master/fancybox-master/dist/jquery.fancybox.min.css">
+        <!-- Unicons Icon -->
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+        <!-- Login CSS -->
+        <link rel="stylesheet" href="css/application.css">
+        <!-- Select2 CSS -->
+        <link rel="stylesheet" href="css/select2.min.css">
+    </head>
+
+    <body>
+
+        <div class="se-pre-con">
+            <div id="loader"></div>
+            <div class="loader-img">
+                <img src="img/trustfin-logo-transparent.png" alt="TFMCS Logo" style="width: 100%; padding: 25px 10px;">
+            </div>
+        </div>
+
+        <main class="app-bg">
+
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-9 col-md-12">
+                   <div class="app-overlay">
+                      <div class="app-form-area">
+
+                        <div class="text-center pb-3">
+                            <a href="index.html">
+                                <img src="img/trustfin-logo-transparent.png" alt="Logo" width="120px" class="img-logo">
+                            </a>
+                            <h5 class="font-600 pt-2">Shares Application Form</h5>
+                            <p class="font-12 text-purple mb-0">Complete the shares application form accurately. Ensure all required fields are filled and supporting documents are uploaded where necessary.</p>
+                        </div>
+
+                        <div id="formAlert" class="alert alert-danger" style="display:none;">
+                            <strong>Please fill the following required fields:</strong>
+                            <ul id="missingFieldsList"></ul>
+                        </div>
+
+                        <div class="mt-3">
+                            <h6 class="text-uppercase text-blue font-700">Guide to Application</h6>
+                            <div class="table-responsive">
+                                <table class="table table-striped font-14">
+                                    <thead>
+                                        <tr>
+                                            <th>Number of Units Applied for</th>
+                                            <th>Amount Payable</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1,000</td>
+                                            <td>₦2,000.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Subsequent multiples of 100</td>
+                                            <td>₦200.00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <form action="" class="auth-form" id="loanform" method="post" enctype="multipart/form-data">
+                            <h6 class="text-uppercase text-blue font-700 mt-3 mb-0">Shares Account Form</h6>
+                            <div class="row">
+                                <!-- <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="avatar" class="form-label">Photo</label>
+                                        <br>
+                                        <div id="my_camera"></div>
+                                        <input type="button" value="Take Snapshot" class="my-1" onClick="take_snapshot()">
+                                    </div>
+                                </div>
+                                <div class="col-md-8 ps-md-4">
+                                    <div class="form-group">
+                                        <label class="form-label d-md-block d-none" style="visibility: hidden;">Your captured image</label>
+                                        <input type="hidden" name="avatar" class="image-tag" required>
+                                        <div id="results">
+                                            Your captured image will appear here...
+                                        </div>
+                                    </div>
+                                </div> -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="account_type_id" class="form-label">Choose Account Type</label>
+                                        <select name="account_type_id" id="account_type_id" class="form-select select-control" required>
+                                            <option value="1" data-value="Personal">Personal</option>
+                                            <option value="2" data-value="Corporate">Corporate</option>
+                                            <option value="3" data-value="Joint">Joint</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="avatar" class="form-label">Account Holder's Photo</label>
+                                        <input type="file" name="avatar" id="avatar" class="form-control" accept="image/*" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="units" class="form-label">Number of units applied for</label>
+                                        <input type="text" name="units" id="units" class="form-control" placeholder="Enter Units" onkeyup="this.value = this.value.replace(/[^0-9]/g,'');">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="amount" class="form-label">Value of Units applied for / amount paid (₦)</label>
+                                        <input type="text" name="amount" id="amount" class="form-control" placeholder="Enter Amount" onkeyup="this.value = this.value.replace(/[^0-9]/g,'');">
+                                    </div>
+                                </div>
+                                <div class="col-md-4 optional-section" id="titlediv">
+                                    <div class="form-group">
+                                        <label for="title" class="form-label">Title(s):</label>
+                                        <input type="text" name="title" id="title" class="form-control" placeholder="Eg. Mr., Mr. & Mrs.">
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        <label for="surname" class="form-label">Surname:</label>
+                                        <input type="text" name="surname" id="surname" class="form-control" placeholder="Surname" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 optional-section" id="fname">
+                                    <div class="form-group">
+                                        <label for="first_name" class="form-label">First Name(s):</label>
+                                        <input type="text" name="first_name" id="first_name" class="form-control" placeholder="First Name(s)">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 optional-section" id="othname">
+                                    <div class="form-group">
+                                        <label for="other_name" class="form-label">Other Name(s):</label>
+                                        <input type="text" name="other_name" id="other_name" class="form-control" placeholder="Other Name(s)">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="email" class="form-label">Email Address:</label>
+                                        <input type="email" name="email" id="email" class="form-control" placeholder="Email Address" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="phone" class="form-label">Phone Number:</label>
+                                        <input type="tel" name="phone" id="phone" class="form-control" placeholder="Phone Number" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 optional-section" id="homeadddiv">
+                                    <div class="form-group">
+                                        <label for="home_address" class="form-label">Home Address</label>
+                                        <textarea name="home_address" id="home_address" class="form-control" rows="3" placeholder="Enter Home Address"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="business_address" class="form-label">Business Address</label>
+                                        <textarea name="business_address" id="business_address" class="form-control" rows="3" placeholder="Enter Business Address"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 optional-section" id="noknamediv">
+                                    <div class="form-group">
+                                        <label for="nok_name" class="form-label">Next of Kin Name:</label>
+                                        <input type="text" name="nok_name" id="nok_name" class="form-control" placeholder="Next of Kin Name" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 optional-section" id="noknumdiv">
+                                    <div class="form-group">
+                                        <label for="nok_phone" class="form-label">Next of Kin Phone:</label>
+                                        <input type="tel" name="nok_phone" id="nok_phone" class="form-control" placeholder="Next of Kin Phone Number" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="account_number" class="form-label">Account Number</label>
+                                        <input type="text" name="account_number" id="account_number" class="form-control" placeholder="Enter Account Number" onkeyup="this.value = this.value.replace(/[^0-9]/g,'');" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="bank_name" class="form-label">Bank Name</label>
+                                        <input type="text" name="bank_name" id="bank_name" class="form-control" placeholder="Enter Bank Name" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="bvn" class="form-label">Bank Verification Number</label>
+                                        <input type="text" name="bvn" id="bvn" class="form-control" placeholder="Enter your BVN" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 optional-section" id="certdiv" style="display: none;">
+                                    <div class="form-group">
+                                        <label for="certificate" class="form-label">Certificate of Incorporation</label>
+                                        <input type="file" class="form-control" name="certificate" id="certificate" accept=".pdf,.jpg,.jpeg,.png">
+                                        <strong class="font-11 text-danger">Max. Size - 2MB (Accepted formats: pdf, jpg, jpeg, png)</strong>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 optional-section" id="regnodiv" style="display: none;">
+                                    <div class="form-group">
+                                        <label for="reg_no" class="form-label">Company Reg No.</label>
+                                        <input type="text" name="reg_no" id="reg_no" class="form-control" placeholder="Eg. RC:100003">
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="signature" class="form-label">Your Signature</label>
+                                        <input type="file" name="signature" id="signature" class="form-control" required>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="agree" id="agree"/>
+                                            <label class="form-check-label" for="terms" style="font-size: 14px;"> I acknowledge that I have read, understood, and agree to be bound by the <a href="terms.html" class="text-primary" target="_blank">Terms & Conditions</a> of Trust Financial Management Cooperative Society.</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12 mt-3">
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-blue rounded-0">Submit Application</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                      </div>
+                   </div>
+                </div>
+            </div>
+        </div>
+        
+
+        </main>
+
+        <button onclick="topFunction()" id="myBtn" title="Go to top"><i class="la la-angle-up" aria-hidden="true"></i></button>
+
+        <!-- Bootstrap JavaScript Libraries -->
+        <script src="bootstrap/js/popper.min.js"></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+        <!-- Jquery 3.5.1 -->
+        <script src="js/jquery-2.1.3.min.js"></script>
+        <!-- Jquery Counter Up -->
+        <script src="js/jquery-ui.min.js"></script>
+        <script src="js/waypoints.min.js"></script>
+        <script src="js/jquery.counterup.min.js"></script>
+        <script>
+            $('.counter').counterUp({
+            delay: 10,
+            time: 3000
+            });
+        </script>
+        <!-- WOW JS -->
+        <script src="js/wow.js"></script>
+        <script>
+            wow = new WOW(
+            {
+                boxClass:     'wow',      // default
+                animateClass: 'animated', // default
+                offset:       0,          // default
+                mobile:       true,       // default
+                live:         true        // default
+            }
+            )
+            wow.init();
+        </script>
+        <!-- FancyBox JS -->
+        <script src="fancybox-master/fancybox-master/dist/jquery.fancybox.min.js"></script>
+        <!-- Custom JS -->
+        <script src="js/scripts.js"></script>
+
+        <!-- AOS JS -->
+        <script src="aos/aos.js"></script>
+        <script>
+            /**
+            * Animation on scroll function and init
+            */
+            function aos_init() {
+                AOS.init({
+                duration: 1000,
+                easing: 'ease-in-out',
+                once: true,
+                mirror: false
+                });
+            }
+            window.addEventListener('load', () => {
+                aos_init();
+            });
+        </script>
+
+    <!-- Slick JS -->
+    <script src="slick-js/jquery-migrate-1.2.1.min.js"></script>
+    <!-- Slick Carousel JS -->
+    <script src="slick-1.8.1/slick-1.8.1/slick/slick.min.js"></script>
+    <script src="slick-1.8.1/slick-1.8.1/slick/slick-animation.min.js"></script>
+
+    <!-- Preloader JS -->
+    <script src="js/modernizr.js"></script>
+    <script>
+        $(window).load(function() {
+            // Animate loader off screen
+            $(".se-pre-con").fadeOut(700);
+        });
+    </script>
+    <!-- Select2 Js -->
+    <script src="js/select2.min.js"></script>
+    <script>
+        $(document).ready(function() {
+           $('.select-control').select2();
+        });
+    </script>
+    <!-- Auth JS -->
+    <script src="js/auth.js"></script>
+    <!-- Webcam JS -->
+    <!-- <script src="js/webcam.min.js"></script>
+    <script language="JavaScript">
+        Webcam.set({
+            width: 200,
+            height: 150,
+            image_format: 'jpeg',
+            jpeg_quality: 90
+        });
+        
+        Webcam.attach( '#my_camera' );
+        
+        function take_snapshot() {
+            Webcam.snap( function(data_uri) {
+                $(".image-tag").val(data_uri);
+                document.getElementById('results').innerHTML = '<img src="'+data_uri+'"/>';
+            } );
+        }
+    </script> -->
+
+    <!-- Prevent Hidden Form fields from Submitting -->
+    <script>
+    $('#loanform').on('submit', function(e) {
+        let hasEmptyRequired = false;
+        let missingFields = [];
+
+        // Always hide alert first
+        $('#formAlert').hide();
+        $('#missingFieldsList').empty();
+
+        $('.optional-section').each(function() {
+            const $section = $(this);
+
+            if ($section.css('display') === 'none') {
+                // Hidden → remove names
+                $section.find('input, select, textarea').each(function() {
+                    $(this).removeAttr('name');
+                });
+            } else {
+                // Visible → check for empty fields
+                $section.find('input, select, textarea').each(function() {
+                    const $field = $(this);
+
+                    // Restore name if missing
+                    if (!$field.attr('name')) {
+                        if ($field.attr('id')) {
+                            $field.attr('name', $field.attr('id'));
+                        }
+                    }
+
+                    // Check if empty
+                    if (!$field.prop('disabled') && !$field.val().trim()) {
+                        hasEmptyRequired = true;
+                        missingFields.push($field.attr('id') || $field.attr('placeholder') || 'Unnamed field');
+                    }
+                });
+            }
+        });
+
+        if (hasEmptyRequired) {
+            e.preventDefault(); // stop submission
+
+            // Append each missing field as a list item
+            $.each(missingFields, function(index, field) {
+                $('#missingFieldsList').append(`<li>${field}</li>`);
+            });
+
+            // Show the alert box
+            $('#formAlert').show();
+        }
+    });
+
+    $('#account_type_id').change(function() {
+       var acctype = $('#account_type_id option:selected').data('value');
+       if (acctype == 'Corporate') {
+        $('label[for="surname"]').html('Company\'s Name:');
+        $('#surname').attr("placeholder", "Company's Name");
+        $('#fname').hide();
+        $('#othname').hide();
+        $('#titlediv').hide();
+        $('#noknamediv').hide();
+        $('#noknumdiv').hide();
+        $('#certdiv').show();
+        $('#regnodiv').show();
+        $('#homeadddiv').hide();
+        $('#business_address').prop('required', true);
+       } else if (acctype == 'Personal') {
+        $('label[for="surname"]').html('Surname:');
+        $('#surname').attr("placeholder", "Surname");
+        $('#fname').show();
+        $('#othname').show();
+        $('#titlediv').show();
+        $('#noknamediv').show();
+        $('#noknumdiv').show();
+        $('#certdiv').hide();
+        $('#regnodiv').hide();
+        $('#homeadddiv').show();
+        $('#business_address').prop('required', false);
+       } else {
+        $('label[for="surname"]').html('Surname:');
+        $('#surname').attr("placeholder", "Surname");
+        $('#fname').show();
+        $('#othname').show();
+        $('#titlediv').show();
+        $('#noknamediv').hide();
+        $('#noknumdiv').hide();
+        $('#certdiv').hide();
+        $('#regnodiv').hide();
+        $('#homeadddiv').show();
+        $('#business_address').prop('required', false);
+       }
+    });
+    </script>
+
+    </body>
+</html>
