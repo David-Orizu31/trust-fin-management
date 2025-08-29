@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from htmlstream.com/preview/front-dashboard-v2.1.1/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 18 Aug 2025 12:59:41 GMT -->
+<head>
+  <!-- Required Meta Tags Always Come First -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Title -->
+  <title>Dashboard | Transactions</title>
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="../img/trustfin-logo-transparent.png">
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet">
+
+  <!-- CSS Implementing Plugins -->
+  <link rel="stylesheet" href="assets/css/vendor.min.css">
+
+  <!-- CSS Front Template -->
+  <link rel="stylesheet" href="assets/css/theme.minc619.css?v=1.0">
+
+  <link rel="preload" href="assets/css/theme.min.css" data-hs-appearance="default" as="style">
+  <link rel="preload" href="assets/css/theme-dark.min.css" data-hs-appearance="dark" as="style">
+</head>
+
+<style>
+    .content-wrapper {
+    background: #f6f7fc;
+    padding: 2.75rem 2.25rem;
+    width: 100%;
+    -webkit-flex-grow: 1;
+    flex-grow: 1;
+}
+
+@media (max-width: 480px) {
+    .content-wrapper {
+        padding: 30px 20px !important;
+    }
+}
+
+.receipt-area {
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+@media print {
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+</style>
+
+<body class="">
+
+    <div class="container-scroller">
+        <div class="content-wrapper" style="min-height: 100vh;">
+           <div class="receipt-area">
+              <div align="right">
+                <button class="btn btn-sm btn-dark" onclick="printDiv('receipt-div')"><span class="bi-printer"></span> Print Receipt</button>
+                <a href="index.html" class="btn btn-sm btn-primary ms-2"><span class="bi-house-door"></span> Dashboard</a>
+              </div>
+              
+              <div id="receipt-div">
+
+                <style>
+                    .font-13 {
+                        font-size: 13px;
+                    }
+
+                    .font-weight-bold {
+                        font-weight: bold;
+                    }
+                </style>
+
+                <div class="card rounded my-3">
+                    <div class="card-body p-3">
+                        <div class="row">
+                            <div class="col-6">
+                                <img src="../img/trustfin-logo.jpg" alt="" style="width: 100px;">
+                            </div>
+                            <div class="col-6 text-end mt-2">
+                                <span class="badge bg-success text-white rounded-4" style="font-size: 11px; padding: 5px 8px 5px 5px;">
+                                    <i class="bi-check-lg"></i> Successful
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                        <small><strong class="text-dark">Amount:</strong></small>
+                        <h1 class="text-success"><b>₦3,000.00</b></h1>
+                        </div>
+
+                        <h4 class="mt-4 font-weight-bold">Transaction Details</h4>
+                        <p class="font-13 text-grey">Your account has been credited with <b class="text-primary">₦3,000</b></p>
+
+                        <div class="p-3 rounded mt-3" style="background: whitesmoke;">
+                           <div class="row">
+                            <div class="col-6">
+                                <p class="text-grey font-13 mb-0">Transaction Date</p>
+                                <p class="font-13">
+                                    <span class="bi-calendar2-week text-grey"></span>
+                                    <span class="font-weight-bold">Jul 01, 2025 02:29 PM</span>
+                                </p>
+                            </div>
+                            <div class="col-6">
+                                <p class="text-grey font-13 mb-0">Transaction Type</p>
+                                <p class="font-13">
+                                    <span class="bi-wallet text-grey"></span>
+                                    <span class="font-weight-bold">Deposit</span>
+                                </p>
+                            </div>
+                            <div class="col-6">
+                                <p class="text-grey font-13 mb-0">Payment Method</p>
+                                <p class="font-13 mb-0">
+                                    <span class="bi-credit-card text-grey"></span>
+                                    <span class="font-weight-bold">Main Balance</span>
+                                </p>
+                            </div>
+                            <div class="col-6">
+                                <p class="text-grey font-13 mb-0">Reference ID</p>
+                                <p class="font-13 mb-0">
+                                    <span class="bi-hash text-grey"></span>
+                                    <span class="font-weight-bold">ECP-29784HHFT-3765</span>
+                                </p>
+                            </div>
+                           </div>
+                        </div>
+
+                        <h5 class="mt-4 font-weight-bold"><span class="bi-person"></span> Recipient Details</h5>
+
+                        <div class="p-3 rounded mt-3" style="background: whitesmoke;">
+                          <div class="row">
+                            <div class="col-6">
+                                <p class="text-grey font-13 mb-0">Name</p>
+                                <p class="font-13">
+                                    <span class="font-weight-bold">David Peterson</span>
+                                </p>
+                            </div>
+                            <div class="col-6">
+                                <p class="text-grey font-13 mb-0">Account Number</p>
+                                <p class="font-13">
+                                    <span class="font-weight-bold">123456789</span>
+                                </p>
+                            </div>
+                            <div class="col-6">
+                                <p class="text-grey font-13 mb-0">Email</p>
+                                <p class="font-13">
+                                    <span class="font-weight-bold">davidpeterson@gmail.com</span>
+                                </p>
+                            </div>
+                            <div class="col-6">
+                                <p class="text-grey font-13 mb-0">Description</p>
+                                <p class="font-13 mb-0">
+                                    <span class="font-weight-bold">Paid $10,000</span>
+                                </p>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <h5 class="mt-4 font-weight-bold"><span class="bi-bank"></span> Financial Details</h5>
+
+                        <div class="p-3 rounded mt-3" style="background: whitesmoke;">
+                          <div class="row">
+                            <div class="col-6">
+                                <p class="text-grey font-13 mb-0">Amount Sent</p>
+                                <p class="font-13 mb-0">
+                                    <span class="font-weight-bold">$0.983645</span>
+                                </p>
+                            </div>
+                            <div class="col-6">
+                                <p class="text-grey font-13 mb-0">Handling & Charges</p>
+                                <p class="font-13 mb-0">
+                                    <span class="font-weight-bold">$0.00</span>
+                                </p>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+           </div>
+        </div>
+    </div>
+    <!-- container-scroller -->
+
+  <!-- JS Implementing Plugins -->
+  <script src="assets/js/vendor.min.js"></script>
+
+  <script src="assets/vendor/chartjs-plugin-datalabels/dist/chartjs-plugin-datalabels.min.js"></script>
+
+  <!-- JS Front -->
+  <script src="assets/js/theme.min.js"></script>
+  <script src="assets/js/hs.theme-appearance-charts.js"></script>
+
+  <!-- JS Plugins Init. -->
+  <script>
+    $(document).on('ready', function () {
+      // INITIALIZATION OF DATERANGEPICKER
+      // =======================================================
+      $('.js-daterangepicker').daterangepicker();
+
+      $('.js-daterangepicker-times').daterangepicker({
+        timePicker: true,
+        startDate: moment().startOf('hour'),
+        endDate: moment().startOf('hour').add(32, 'hour'),
+        locale: {
+          format: 'M/DD hh:mm A'
+        }
+      });
+
+      var start = moment();
+      var end = moment();
+
+      function cb(start, end) {
+        $('#js-daterangepicker-predefined .js-daterangepicker-predefined-preview').html(start.format('MMM D') + ' - ' + end.format('MMM D, YYYY'));
+      }
+
+      $('#js-daterangepicker-predefined').daterangepicker({
+        startDate: start,
+        endDate: end,
+        ranges: {
+          'Today': [moment(), moment()],
+          'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+          'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+          'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+          'This Month': [moment().startOf('month'), moment().endOf('month')],
+          'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        }
+      }, cb);
+
+      cb(start, end);
+    });
+
+
+    // INITIALIZATION OF DATATABLES
+    // =======================================================
+    HSCore.components.HSDatatables.init($('#datatable'), {
+      select: {
+        style: 'multi',
+        selector: 'td:first-child input[type="checkbox"]',
+        classMap: {
+          checkAll: '#datatableCheckAll',
+          counter: '#datatableCounter',
+          counterInfo: '#datatableCounterInfo'
+        }
+      },
+      language: {
+        zeroRecords: `<div class="text-center p-4">
+              <img class="mb-3" src="./assets/svg/illustrations/oc-error.svg" alt="Image Description" style="width: 10rem;" data-hs-theme-appearance="default">
+              <img class="mb-3" src="./assets/svg/illustrations-light/oc-error.svg" alt="Image Description" style="width: 10rem;" data-hs-theme-appearance="dark">
+            <p class="mb-0">No data to show</p>
+            </div>`
+      }
+    });
+
+    const datatable = HSCore.components.HSDatatables.getItem(0)
+
+    document.querySelectorAll('.js-datatable-filter').forEach(function (item) {
+      item.addEventListener('change',function(e) {
+        const elVal = e.target.value,
+    targetColumnIndex = e.target.getAttribute('data-target-column-index'),
+    targetTable = e.target.getAttribute('data-target-table');
+
+    HSCore.components.HSDatatables.getItem(targetTable).column(targetColumnIndex).search(elVal !== 'null' ? elVal : '').draw()
+      })
+    })
+  </script>
+
+  <!-- JS Plugins Init. -->
+  <script>
+    (function() {
+      localStorage.removeItem('hs_theme')
+
+      window.onload = function () {
+        
+
+        // INITIALIZATION OF NAVBAR VERTICAL ASIDE
+        // =======================================================
+        new HSSideNav('.js-navbar-vertical-aside').init()
+
+
+        // INITIALIZATION OF FORM SEARCH
+        // =======================================================
+        const HSFormSearchInstance = new HSFormSearch('.js-form-search')
+
+        if (HSFormSearchInstance.collection.length) {
+          HSFormSearchInstance.getItem(1).on('close', function (el) {
+            el.classList.remove('top-0')
+          })
+
+          document.querySelector('.js-form-search-mobile-toggle').addEventListener('click', e => {
+            let dataOptions = JSON.parse(e.currentTarget.getAttribute('data-hs-form-search-options')),
+              $menu = document.querySelector(dataOptions.dropMenuElement)
+
+            $menu.classList.add('top-0')
+            $menu.style.left = 0
+          })
+        }
+
+
+        // INITIALIZATION OF BOOTSTRAP DROPDOWN
+        // =======================================================
+        HSBsDropdown.init()
+
+
+        // INITIALIZATION OF CHARTJS
+        // =======================================================
+        HSCore.components.HSChartJS.init('.js-chart')
+
+
+        // INITIALIZATION OF CHARTJS
+        // =======================================================
+        HSCore.components.HSChartJS.init('#updatingBarChart')
+        const updatingBarChart = HSCore.components.HSChartJS.getItem('updatingBarChart')
+
+        // Call when tab is clicked
+        document.querySelectorAll('[data-bs-toggle="chart-bar"]').forEach(item => {
+          item.addEventListener('click', e => {
+            let keyDataset = e.currentTarget.getAttribute('data-datasets')
+
+            const styles = HSCore.components.HSChartJS.getTheme('updatingBarChart', HSThemeAppearance.getAppearance())
+
+            if (keyDataset === 'lastWeek') {
+              updatingBarChart.data.labels = ["Apr 22", "Apr 23", "Apr 24", "Apr 25", "Apr 26", "Apr 27", "Apr 28", "Apr 29", "Apr 30", "Apr 31"];
+              updatingBarChart.data.datasets = [
+                {
+                  "data": [120, 250, 300, 200, 300, 290, 350, 100, 125, 320],
+                  "backgroundColor": styles.data.datasets[0].backgroundColor,
+                  "hoverBackgroundColor": styles.data.datasets[0].hoverBackgroundColor,
+                  "borderColor": styles.data.datasets[0].borderColor,
+                  "maxBarThickness": 10
+                },
+                {
+                  "data": [250, 130, 322, 144, 129, 300, 260, 120, 260, 245, 110],
+                  "backgroundColor": styles.data.datasets[1].backgroundColor,
+                  "borderColor": styles.data.datasets[1].borderColor,
+                  "maxBarThickness": 10
+                }
+              ];
+              updatingBarChart.update();
+            } else {
+              updatingBarChart.data.labels = ["May 1", "May 2", "May 3", "May 4", "May 5", "May 6", "May 7", "May 8", "May 9", "May 10"];
+              updatingBarChart.data.datasets = [
+                {
+                  "data": [200, 300, 290, 350, 150, 350, 300, 100, 125, 220],
+                  "backgroundColor": styles.data.datasets[0].backgroundColor,
+                  "hoverBackgroundColor": styles.data.datasets[0].hoverBackgroundColor,
+                  "borderColor": styles.data.datasets[0].borderColor,
+                  "maxBarThickness": 10
+                },
+                {
+                  "data": [150, 230, 382, 204, 169, 290, 300, 100, 300, 225, 120],
+                  "backgroundColor": styles.data.datasets[1].backgroundColor,
+                  "borderColor": styles.data.datasets[1].borderColor,
+                  "maxBarThickness": 10
+                }
+              ]
+              updatingBarChart.update();
+            }
+          })
+        })
+
+
+        // INITIALIZATION OF CHARTJS
+        // =======================================================
+        HSCore.components.HSChartJS.init('.js-chart-datalabels', {
+          plugins: [ChartDataLabels],
+          options: {
+            plugins: {
+              datalabels: {
+                anchor: function (context) {
+                  var value = context.dataset.data[context.dataIndex];
+                  return value.r < 20 ? 'end' : 'center';
+                },
+                align: function (context) {
+                  var value = context.dataset.data[context.dataIndex];
+                  return value.r < 20 ? 'end' : 'center';
+                },
+                color: function (context) {
+                  var value = context.dataset.data[context.dataIndex];
+                  return value.r < 20 ? context.dataset.backgroundColor : context.dataset.color;
+                },
+                font: function (context) {
+                  var value = context.dataset.data[context.dataIndex],
+                    fontSize = 25;
+
+                  if (value.r > 50) {
+                    fontSize = 35;
+                  }
+
+                  if (value.r > 70) {
+                    fontSize = 55;
+                  }
+
+                  return {
+                    weight: 'lighter',
+                    size: fontSize
+                  };
+                },
+                formatter: function (value) {
+                  return value.r
+                },
+                offset: 2,
+                padding: 0
+              }
+            },
+          }
+        })
+
+        // INITIALIZATION OF SELECT
+        // =======================================================
+        HSCore.components.HSTomSelect.init('.js-select')
+
+
+        // INITIALIZATION OF CLIPBOARD
+        // =======================================================
+        HSCore.components.HSClipboard.init('.js-clipboard')
+      }
+    })()
+  </script>
+
+  <!-- Style Switcher JS -->
+
+  <script>
+      (function () {
+        // STYLE SWITCHER
+        // =======================================================
+        const $dropdownBtn = document.getElementById('selectThemeDropdown') // Dropdowon trigger
+        const $variants = document.querySelectorAll(`[aria-labelledby="selectThemeDropdown"] [data-icon]`) // All items of the dropdown
+
+        // Function to set active style in the dorpdown menu and set icon for dropdown trigger
+        const setActiveStyle = function () {
+          $variants.forEach($item => {
+            if ($item.getAttribute('data-value') === HSThemeAppearance.getOriginalAppearance()) {
+              $dropdownBtn.innerHTML = `<i class="${$item.getAttribute('data-icon')}" />`
+              return $item.classList.add('active')
+            }
+
+            $item.classList.remove('active')
+          })
+        }
+
+        // Add a click event to all items of the dropdown to set the style
+        $variants.forEach(function ($item) {
+          $item.addEventListener('click', function () {
+            HSThemeAppearance.setAppearance($item.getAttribute('data-value'))
+          })
+        })
+
+        // Call the setActiveStyle on load page
+        setActiveStyle()
+
+        // Add event listener on change style to call the setActiveStyle function
+        window.addEventListener('on-hs-appearance-change', function () {
+          setActiveStyle()
+        })
+      })()
+    </script>
+
+  <!-- Toastr JS -->
+  <script src="../js/sweet-alert.js"></script>
+
+    <script>
+    function printDiv(divId) {
+        var printContents = document.getElementById(divId).innerHTML;
+        var originalContents = document.body.innerHTML;
+
+        document.body.innerHTML = printContents;
+        window.print();
+        document.body.innerHTML = originalContents;
+    }
+    </script>
+
+  <!-- End Style Switcher JS -->
+</body>
+
+<!-- Mirrored from htmlstream.com/preview/front-dashboard-v2.1.1/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 18 Aug 2025 13:00:11 GMT -->
+</html>

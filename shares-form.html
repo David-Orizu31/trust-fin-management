@@ -130,13 +130,13 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="units" class="form-label">Number of units applied for</label>
-                                        <input type="text" name="units" id="units" class="form-control" placeholder="Enter Units" onkeyup="this.value = this.value.replace(/[^0-9]/g,'');">
+                                        <input type="text" name="units" id="units" class="form-control" placeholder="Enter Units">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="amount" class="form-label">Value of Units applied for / amount paid (₦)</label>
-                                        <input type="text" name="amount" id="amount" class="form-control" placeholder="Enter Amount" onkeyup="this.value = this.value.replace(/[^0-9]/g,'');">
+                                        <input type="text" name="amount" id="amount" class="form-control" placeholder="Enter Amount">
                                     </div>
                                 </div>
                                 <div class="col-md-4 optional-section" id="titlediv">
@@ -455,6 +455,29 @@
         $('#regnodiv').hide();
         $('#homeadddiv').show();
         $('#business_address').prop('required', false);
+       }
+    });
+
+    // On Units/Amount Key up
+    $('#units').keyup(function() {
+       this.value = this.value.replace(/[^0-9]/g,'');
+       var input = parseFloat(this.value);
+       var amount = input * 2;
+       if (isNaN(amount)) {
+        $('#amount').val('');
+       } else {
+        $('#amount').val(amount);
+       }
+    });
+
+    $('#amount').keyup(function() {
+       this.value = this.value.replace(/[^0-9]/g,'');
+       var input = parseFloat(this.value);
+       var units = input / 2;
+       if (isNaN(units)) {
+        $('#units').val('');
+       } else {
+        $('#units').val(units);
        }
     });
     </script>
