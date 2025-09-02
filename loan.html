@@ -73,7 +73,7 @@
                                     <div class="form-group">
                                         <label for="avatar" class="form-label">Photo</label>
                                         <br>
-                                        <div id="my_camera"></div>
+                                        <div id="my_camera" style="width: 100%; max-width: 400px; height: auto;"></div>
                                         <input type="button" value="Take Snapshot" class="my-2 btn btn-primary" onClick="take_snapshot()">
                                     </div>
                                 </div>
@@ -520,13 +520,17 @@
     <script src="js/webcam.min.js"></script>
     <script language="JavaScript">
         Webcam.set({
-            width: 300,
-            height: 225,
+            width: 250,
+            height: 187.5,
             image_format: 'jpeg',
             jpeg_quality: 90
         });
         
         Webcam.attach( '#my_camera' );
+
+        // Make video responsive
+        document.querySelector("#my_camera video").style.width = "100%";
+        document.querySelector("#my_camera video").style.height = "auto";
         
         function take_snapshot() {
             Webcam.snap( function(data_uri) {
