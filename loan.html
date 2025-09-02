@@ -437,14 +437,14 @@
 <style>
 #video {
     width: 100%;
-    max-width: 640px;
-    height: auto;
+    max-width: 240px;
+    height: 180px;
     border: 1px solid #ddd;
 }
 #photo {
     width: 100%;
-    max-width: 640px;
-    height: auto;
+    max-width: 240px;
+    height: 180px;
     border: 1px solid #ddd;
 }
 #captureButton {
@@ -548,7 +548,7 @@
             try {
                 const stream = await navigator.mediaDevices.getUserMedia({ 
                     video: { 
-                        facingMode: 'environment' 
+                        facingMode: 'user' 
                     } 
                 });
                 video.srcObject = stream;
