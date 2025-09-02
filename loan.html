@@ -71,19 +71,18 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="avatar" class="form-label">Photo</label>
+                                        <label for="avatar" class="form-label">Capture a Selfie (Ensure your face is centered)</label>
                                         <br>
-                                        <div id="my_camera" class="camera-container"></div>
-                                        <input type="button" value="Take Snapshot" class="my-2 btn btn-primary" onClick="take_snapshot()">
+                                        <video id="video" autoplay playsinline></video>
+                                        <button type="button" id="captureButton" class="my-2 btn btn-primary btn-sm">Take Photo</button>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label d-md-block d-none" style="visibility: hidden;">Your captured image</label>
-                                        <input type="hidden" name="avatar" class="image-tag" required>
-                                        <div id="results" class="camera-container">
-                                            Your captured image will appear here...
-                                        </div>
+                                        <canvas id="canvas" style="display:none;"></canvas>
+                                        <img id="photo" alt="Captured photo will appear here">
+                                        <input type="hidden" name="avatar" id="avatar" value="">
                                     </div>
                                 </div>
                                 <div class="col-md-12">
@@ -436,34 +435,23 @@
         </div>
 
 <style>
-.camera-container {
+#video {
     width: 100%;
-    max-width: 220px;
-    aspect-ratio: 4/3; /* maintains 4:3 ratio on all devices */
-    background: #000;
-    overflow: hidden;
-    border-radius: 8px;
+    max-width: 640px;
+    height: auto;
+    border: 1px solid #ddd;
 }
-.camera-container video, 
-.camera-container img {
+#photo {
     width: 100%;
-    height: 100%;
-    object-fit: cover; /* fills without stretching */
+    max-width: 640px;
+    height: auto;
+    border: 1px solid #ddd;
 }
-
-#results.camera-container {
-    width: 100%;
-    max-width: 220px;
-    border: 1px dashed #aaa;
-    border-radius: 8px;
-    text-align: center;
-    overflow: hidden;
-    color: whitesmoke;
-}
-#results.camera-container img {
-    width: 100%;
-    height: auto; /* keep aspect ratio */
-    display: block;
+#captureButton {
+    font-size: 14px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
 }
 </style>
         
@@ -549,23 +537,38 @@
     <!-- Auth JS -->
     <script src="js/auth.js"></script>
     <!-- Webcam JS -->
-    <script src="js/webcam.min.js"></script>
     <script>
-        Webcam.set({
-            width: 220,        // internal capture resolution
-            height: 165,
-            image_format: 'jpeg',
-            jpeg_quality: 90   // ✅ lighter file, still sharp
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('canvas');
+        const photo = document.getElementById('photo');
+        const avatar = document.getElementById('avatar');
+        const captureButton = document.getElementById('captureButton');
+
+        async function startCamera() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ 
+                    video: { 
+                        facingMode: 'environment' 
+                    } 
+                });
+                video.srcObject = stream;
+            } catch (err) {
+                console.error("Error accessing the camera", err);
+                alert("Error accessing the camera: " + err.message);
+            }
+        }
+
+        captureButton.addEventListener('click', () => {
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+            const imageDataUrl = canvas.toDataURL('image/jpeg');
+            photo.src = imageDataUrl;
+            avatar.value = imageDataUrl;
         });
 
-        Webcam.attach('#my_camera');
-
-        function take_snapshot() {
-            Webcam.snap(function(data_uri) {
-                document.querySelector(".image-tag").value = data_uri;
-                document.getElementById('results').innerHTML = '<img src="'+data_uri+'"/>';
-            });
-        }
+        // Start the camera when the page loads
+        window.addEventListener('load', startCamera);
     </script>
     <!-- Prevent Hidden Form fields from Submitting -->
     <script>
