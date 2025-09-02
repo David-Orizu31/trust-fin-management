@@ -73,7 +73,7 @@
                                     <div class="form-group">
                                         <label for="avatar" class="form-label">Photo</label>
                                         <br>
-                                        <div id="my_camera" style="width: 100%; max-width: 400px; height: 187.5px;"></div>
+                                        <div id="my_camera" class="camera-container"></div>
                                         <input type="button" value="Take Snapshot" class="my-2 btn btn-primary" onClick="take_snapshot()">
                                     </div>
                                 </div>
@@ -81,7 +81,7 @@
                                     <div class="form-group">
                                         <label class="form-label d-md-block d-none" style="visibility: hidden;">Your captured image</label>
                                         <input type="hidden" name="avatar" class="image-tag" required>
-                                        <div id="results">
+                                        <div id="results" class="camera-container">
                                             Your captured image will appear here...
                                         </div>
                                     </div>
@@ -434,6 +434,43 @@
                 </div>
             </div>
         </div>
+
+<style>
+.camera-container {
+    width: 100%;
+    max-width: 220px;
+    aspect-ratio: 4/3; /* maintains 4:3 ratio on all devices */
+    background: #000;
+    overflow: hidden;
+    border-radius: 8px;
+}
+.camera-container video, 
+.camera-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* fills without stretching */
+}
+
+#results.camera-container {
+    width: 100%;
+    max-width: 220px;
+    aspect-ratio: 4/3;
+    border: 1px dashed #aaa;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: whitesmoke;
+    font-size: 14px;
+    text-align: center;
+    overflow: hidden;
+}
+#results.camera-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+</style>
         
 
         </main>
@@ -518,25 +555,21 @@
     <script src="js/auth.js"></script>
     <!-- Webcam JS -->
     <script src="js/webcam.min.js"></script>
-    <script language="JavaScript">
+    <script>
         Webcam.set({
-            width: 250,
-            height: 187.5,
+            width: 220,        // internal capture resolution
+            height: 165,
             image_format: 'jpeg',
-            jpeg_quality: 90
+            jpeg_quality: 90   // ✅ lighter file, still sharp
         });
-        
-        Webcam.attach( '#my_camera' );
 
-        // Make video responsive
-        document.querySelector("#my_camera video").style.width = "100%";
-        document.querySelector("#my_camera video").style.height = "187.5px";
-        
+        Webcam.attach('#my_camera');
+
         function take_snapshot() {
-            Webcam.snap( function(data_uri) {
-                $(".image-tag").val(data_uri);
+            Webcam.snap(function(data_uri) {
+                document.querySelector(".image-tag").value = data_uri;
                 document.getElementById('results').innerHTML = '<img src="'+data_uri+'"/>';
-            } );
+            });
         }
     </script>
     <!-- Prevent Hidden Form fields from Submitting -->
