@@ -69,15 +69,15 @@
 
                         <form action="" class="auth-form" id="loanform" method="post" enctype="multipart/form-data">
                             <div class="row">
-                                <!-- <div class="col-md-4">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="avatar" class="form-label">Photo</label>
                                         <br>
                                         <div id="my_camera"></div>
-                                        <input type="button" value="Take Snapshot" class="my-1" onClick="take_snapshot()">
+                                        <input type="button" value="Take Snapshot" class="my-2 btn btn-primary" onClick="take_snapshot()">
                                     </div>
                                 </div>
-                                <div class="col-md-8 ps-md-4">
+                                <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="form-label d-md-block d-none" style="visibility: hidden;">Your captured image</label>
                                         <input type="hidden" name="avatar" class="image-tag" required>
@@ -85,8 +85,8 @@
                                             Your captured image will appear here...
                                         </div>
                                     </div>
-                                </div> -->
-                                <div class="col-md-6">
+                                </div>
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="account_type_id" class="form-label">Choose Account Type</label>
                                         <select name="account_type_id" id="account_type_id" class="form-select select-control" required>
@@ -96,12 +96,12 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                <!-- <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="avatar" class="form-label">Account Holder's Photo</label>
                                         <input type="file" name="avatar" id="avatar" class="form-control" accept="image/*" required>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="col-md-4 optional-section" id="titlediv">
                                     <div class="form-group">
                                         <label for="title" class="form-label">Title(s):</label>
@@ -517,11 +517,11 @@
     <!-- Auth JS -->
     <script src="js/auth.js"></script>
     <!-- Webcam JS -->
-    <!-- <script src="js/webcam.min.js"></script>
+    <script src="js/webcam.min.js"></script>
     <script language="JavaScript">
         Webcam.set({
-            width: 200,
-            height: 150,
+            width: 300,
+            height: 225,
             image_format: 'jpeg',
             jpeg_quality: 90
         });
@@ -534,8 +534,7 @@
                 document.getElementById('results').innerHTML = '<img src="'+data_uri+'"/>';
             } );
         }
-    </script> -->
-
+    </script>
     <!-- Prevent Hidden Form fields from Submitting -->
     <script>
     $('#loanform').on('submit', function(e) {
